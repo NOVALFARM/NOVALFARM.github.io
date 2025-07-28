@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Confirmación de Asistencia</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+    <img src="assets/Propuesta-lanzamiento.jpg" alt="Encabezado" class="imagen-superior">
+
+    <form id="asistenciaForm">
+        <h2>Formulario de Confirmación</h2>
+
+        <label for="nombre">Nombre completo:</label>
+        <input type="text" id="nombre" name="nombre" required>
+
+        <label for="cedula">Cédula:</label>
+        <input type="text" id="cedula" name="cedula" required>
+
+        <label for="nombreEstablecido">Nombre establecido:</label>
+        <input type="text" id="nombreEstablecido" name="nombreEstablecido" required>
+
+        <label for="ciudad">Ciudad:</label>
+        <input type="text" id="ciudad" name="ciudad" required>
+
+        <label for="direccion">Dirección:</label>
+        <input type="text" id="direccion" name="direccion" required>
+
+        <label for="telefonos">Teléfono:</label>
+        <input type="text" id="telefonos" name="telefonos" required>
+
+        <label for="distribuidor">Selecciona tu distribuidor:</label>
+        <select id="distribuidor" name="distribuidor" required>
+            <!-- Se llenará dinámicamente -->
+        </select>
+
+        <button type="submit">Confirmar asistencia</button>
+
+        <div id="mensaje"></div>
+    </form>
+
+    <script>
+        const form = document.getElementById("asistenciaForm");
+        const mensaje = document.getElementById("mensaje");
+        const distribuidorSelect = document.getElementById("distribuidor");
+
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz2rNB7ydP9yiHqtXZ9Vf1hqDWuqnATiL9zfrjEn7_8DRFYHKl3kzers83y6siZLtbENA/exec';
+
+        async function cargarProveedores() {
+            try {
+                const response = await fetch(SCRIPT_URL + '?action=obtenerProveedores');
+                const data = await response.json();
+
+                if (data.success) {
+                    distribuidorSelect.innerHTML = '';
+                    data.proveedoresDisponibles.forEach(prov => {
+                        const option = document.createElement("option");
+                        option.value = prov;
+                        option.textContent = prov;
+                        distribuidorSelect.appendChild(option);
+                    });
+                } else {
+                    distribuidorSelect.innerHTML = '<option disabled>No hay cupos disponibles</option>';
+                }
+            } catch (error) {
+                mensaje.textContent = "Error al cargar distribuidores.";
+            }
+        }
+
+        cargarProveedores();
+
+        form.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const formData = new FormData(form);
+            formData.append("action", "registrarAsistencia");
+
+            try {
+                const response = await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    body: formData,
+                });
+                const result = await response.json();
+
+                if (result.success) {
+                    mensaje.textContent = "¡Registro exitoso! Cupo confirmado.";
+                    form.reset();
+                    await cargarProveedores();
+                } else {
+                    mensaje.textContent = result.mensaje;
+                }
+            } catch (err) {
+                mensaje.textContent = "Error al enviar el formulario.";
+            }
+        });
+    </script>
+
+</body>
+
+</html>
