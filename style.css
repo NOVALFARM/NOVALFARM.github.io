@@ -191,6 +191,12 @@ button:hover {
     background-attachment: scroll;
   }
 
+  .contenedor-principal {
+    height: auto;
+    aspect-ratio: 9 / 16;
+   /* relación más vertical */
+  }
+
   .texto-lanzamiento,
   .gato,
   .telefono,
