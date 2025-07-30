@@ -1,12 +1,10 @@
-// Tiempo en milisegundos entre repeticiones (puedes cambiarlo)
-const INTERVALO_REPETICION = 6000;
-
 function reiniciarAnimaciones() {
     const elementos = document.querySelectorAll('.texto-lanzamiento, .gato, .telefono, .cohete');
 
     elementos.forEach(el => {
         el.style.animation = 'none';
         el.offsetHeight; // Forzar reflow
+
         if (el.classList.contains('texto-lanzamiento')) {
             el.style.animation = 'fadeIn 2s ease-in forwards';
         } else if (el.classList.contains('gato')) {
@@ -19,5 +17,7 @@ function reiniciarAnimaciones() {
     });
 }
 
-// Iniciar animación cíclica
-setInterval(reiniciarAnimaciones, INTERVALO_REPETICION);
+// Ejecutar solo una vez cuando el DOM esté listo
+document.addEventListener('DOMContentLoaded', () => {
+    reiniciarAnimaciones();
+});
