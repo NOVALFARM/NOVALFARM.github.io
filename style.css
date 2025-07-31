@@ -30,6 +30,13 @@ body {
   background-repeat: no-repeat;
 }
 
+.imagefinal-responsive {
+  display: none;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
 .fondo,
 .estrellas,
 .texto-lanzamiento,
@@ -206,9 +213,17 @@ button:hover {
   }
 
   .contenedor-principal {
-    height: auto;
-    aspect-ratio: 9 / 16;
-    /* relación más vertical */
+    background-image: none !important;
+    background-color: #007BC3;
+    height: 450px !important;
+  }
+
+  .contenedor-principal>img:not(.imagefinal-responsive) {
+    display: none !important;
+  }
+
+  .imagefinal-responsive {
+    display: block !important;
   }
 
   .texto-lanzamiento,
@@ -238,6 +253,10 @@ button:hover {
 
 @media (max-width: 480px) {
 
+  .contenedor-principal {
+    height: 220px !important;
+  }
+
   form {
     padding: 1rem;
   }
@@ -259,6 +278,10 @@ button:hover {
 
 @media (max-width: 360px) {
 
+  .contenedor-principal {
+    height: 180px !important;
+  }
+
   .autorizacion-datos {
     flex-direction: column;
     gap: 5px;
@@ -269,7 +292,7 @@ button:hover {
   }
 }
 
-@media (orientation: portrait) {
+@media (orientation: portrait) and (min-width: 769px) {
   .contenedor-principal {
     height: 100vh;
   }
