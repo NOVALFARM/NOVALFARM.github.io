@@ -9,59 +9,60 @@
 </head>
 
 <body>
-
-    <div class="contenedor-principal">
-        <img src="assets/imagefinal.jpg" alt="Final" class="imagefinal-responsive">
-        <img src="assets/estrellas.png" alt="Estrellas" class="estrellas">
-        <img src="assets/texto_lanzamiento.png" alt="Texto Lanzamiento" class="texto-lanzamiento">
-        <img src="assets/gato.png" alt="Gato" class="gato">
-        <img src="assets/telefono.png" alt="Teléfono" class="telefono">
-        <img src="assets/cohete.png" alt="Cohete" class="cohete">
-    </div>
-
-    <form id="asistenciaForm">
-        <h2>Formulario de Confirmación</h2>
-        <h2 style="font-style: italic; font-size: 18px;">"aforo limitado, aparta tu cupo"</h2>
-
-        <label for="nombre">Nombre completo:</label>
-        <input type="text" id="nombre" name="nombre" required>
-
-        <label for="cedula">Cédula:</label>
-        <input type="text" id="cedula" name="cedula" required>
-
-        <label for="nombreEstablecido">Nombre establecido:</label>
-        <input type="text" id="nombreEstablecido" name="nombreEstablecido" required>
-
-        <label for="ciudad">Ciudad:</label>
-        <input type="text" id="ciudad" name="ciudad" required>
-
-        <label for="direccion">Dirección:</label>
-        <input type="text" id="direccion" name="direccion" required>
-
-        <label for="telefonos">Teléfono:</label>
-        <input type="text" id="telefonos" name="telefonos" required>
-
-        <label for="distribuidor">Selecciona tu distribuidor:</label>
-        <select id="distribuidor" name="distribuidor" required>
-            <option value="">Seleccione un distribuidor</option>
-        </select>
-
-        <!-- Se llenará dinámicamente -->
-
-        <div class="autorizacion-datos">
-            <input type="checkbox" id="aceptaDatos" name="aceptaDatos" required>
-            <label for="aceptaDatos">
-                He leído y acepto el tratamiento de mis datos personales conforme a la
-                <a href="assets/POLITICA-DE-TRATAMIENTO-DE-DATOS-PERSONALES.pdf" target="_blank">Política de Tratamiento
-                    de Datos Personales</a>.
-            </label>
+    <main>
+        <div class="contenedor-principal">
+            <img src="assets/imagefinal.jpg" alt="Final" class="imagefinal-responsive">
+            <img src="assets/estrellas.png" alt="Estrellas" class="estrellas">
+            <img src="assets/texto_lanzamiento.png" alt="Texto Lanzamiento" class="texto-lanzamiento">
+            <img src="assets/gato.png" alt="Gato" class="gato">
+            <img src="assets/telefono.png" alt="Teléfono" class="telefono">
+            <img src="assets/cohete.png" alt="Cohete" class="cohete">
         </div>
 
-        <button type="submit">Confirmar asistencia</button>
+        <form id="asistenciaForm">
+            <h2>Formulario de Confirmación</h2>
+            <h2 style="font-style: italic; font-size: 18px;">"aforo limitado, aparta tu cupo"</h2>
 
-        <div id="mensaje"></div>
-    </form>
+            <label for="nombre">Nombre completo:</label>
+            <input type="text" id="nombre" name="nombre" required>
 
+            <label for="cedula">Cédula:</label>
+            <input type="text" id="cedula" name="cedula" required>
+
+            <label for="nombreEstablecido">Nombre establecido:</label>
+            <input type="text" id="nombreEstablecido" name="nombreEstablecido" required>
+
+            <label for="ciudad">Ciudad:</label>
+            <input type="text" id="ciudad" name="ciudad" required>
+
+            <label for="direccion">Dirección:</label>
+            <input type="text" id="direccion" name="direccion" required>
+
+            <label for="telefonos">Teléfono:</label>
+            <input type="text" id="telefonos" name="telefonos" required>
+
+            <label for="distribuidor">Selecciona tu distribuidor:</label>
+            <select id="distribuidor" name="distribuidor" required>
+                <option value="">Seleccione un distribuidor</option>
+            </select>
+
+            <!-- Se llenará dinámicamente -->
+
+            <div class="autorizacion-datos">
+                <input type="checkbox" id="aceptaDatos" name="aceptaDatos" required>
+                <label for="aceptaDatos">
+                    He leído y acepto el tratamiento de mis datos personales conforme a la
+                    <a href="assets/POLITICA-DE-TRATAMIENTO-DE-DATOS-PERSONALES.pdf" target="_blank">Política de
+                        Tratamiento
+                        de Datos Personales</a>.
+                </label>
+            </div>
+
+            <button type="submit">Confirmar asistencia</button>
+
+            <div id="mensaje"></div>
+        </form>
+    </main>
     <script src="image.js"></script>
     <script src="script.js"></script>
 
